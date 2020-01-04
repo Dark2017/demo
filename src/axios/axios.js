@@ -11,9 +11,8 @@ const request = axios.create({
   withCredentials: true,  //是否带cookie
 
 })
-
 //请求拦截器
-axios.interceptors.request.use(config=>{
+request.interceptors.request.use(config=>{
   return config
 }, err=>{
     console.log(err)
@@ -21,7 +20,7 @@ axios.interceptors.request.use(config=>{
 })
 
 //响应拦截器
-axios.interceptors.response.use(res=>{
+request.interceptors.response.use(res=>{
   return res
 }, err=>{
     if (err && err.response) {
