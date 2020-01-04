@@ -14,11 +14,11 @@
     <div class="tiexian">
       <h3 class="title"><span class="line"></span>DiscountConfig</h3>
       <div>
-      <el-input class="search" type="text" placeholder="please input address" v-model="key" clearable></el-input>
+      <!-- <el-input class="search" type="text" placeholder="please input address" v-model="key" clearable></el-input> -->
       <el-table
         :data="value.rateList"
         stripe
-        style="width: 100%">
+        style="width: 100%;z-index:1">
         <el-table-column prop="date" label="date">
           <template slot-scope="{row,$index}">
             <span v-if="!isEdit[$index]">{{row.date}}</span>
@@ -33,9 +33,9 @@
         </el-table-column>
         <el-table-column label="opeartion" prop="opp">
           <template slot-scope="{row,$index}" >
-            <el-button class="edit" v-if="!isEdit[$index]" @click="Edit(row,$index)">edit</el-button>
+            <el-button class="edit" v-if="!isEdit[$index]" :disabled="isEditable" @click="Edit(row,$index)">edit</el-button>
             <el-button class="edit" v-if="isEdit[$index]" @click="Save(row,$index)">save</el-button>
-            <el-button class="edit" v-if="isEdit[$index]" @click="Cancel(row,$index)">cancel</el-button>
+            <el-button class="edit" v-if="isEdit[$index]"  @click="Cancel(row,$index)">cancel</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -71,11 +71,13 @@ export default {
   },
   data() {
     return {
-      tableData:[
-        {
-          prop:111
-        }
-      ],
+      //编辑禁用
+      isEditable:false,
+      // tableData:[
+      //   {
+      //     prop:111
+      //   }
+      // ],
       isEdit:[], //编辑
       key:'',
       date:[],
@@ -84,34 +86,34 @@ export default {
         row:'',
         val:0,
       },
-      opeartion:{
-        render: (h,parms)=>{
-          const info = h(
-            'span',
-            {
-              on:{
-                click() {
-                  console.log(parms.row)
-                }
-              },
-              style:{
-                    display: 'inline-block',
-                    margin:'10px',
-                    border: '1px solid' ,
-                    cursor: 'pointer',
-                    padding: '5px',
-                    background: '#eeeeee',
-              },
-              domProps:{
-                innerhtml:'<span>eidt</span>'
-              }
-            }
-            )
-            const temp = []
-            temp.push(info)
-            return h('div',temp)
-        },
-      }
+      // opeartion:{
+      //   render: (h,parms)=>{
+      //     const info = h(
+      //       'span',
+      //       {
+      //         on:{
+      //           click() {
+      //             console.log(parms.row)
+      //           }
+      //         },
+      //         style:{
+      //               display: 'inline-block',
+      //               margin:'10px',
+      //               border: '1px solid' ,
+      //               cursor: 'pointer',
+      //               padding: '5px',
+      //               background: '#eeeeee',
+      //         },
+      //         domProps:{
+      //           innerhtml:'<span>eidt</span>'
+      //         }
+      //       }
+      //       )
+      //       const temp = []
+      //       temp.push(info)
+      //       return h('div',temp)
+      //   },
+      // }
     }
   },
   mounted() {
@@ -124,16 +126,19 @@ export default {
       this.$set(this.isEdit,val,true)
       this.$set(this.date,val,row.date)
       this.$set(this.address,val,row.address)
+      this.isEditable = true
     },
     //保存
     Save(row,val){
       this.$set(this.isEdit,val,false)//目标数据,索引,值
       row.date = this.date[val]
       row.address = this.address[val]
+      this.isEditable = false
     },
     //取消
     Cancel(row,val){
       this.$set(this.isEdit,val,false)
+      this.isEditable = false
     },
     //页码组变化
     sizechange(val){
@@ -168,7 +173,7 @@ export default {
   .line{
     height: 100%;
     width: 3px;
-    background: blue;
+    background: #4491d5;
     display: inline-block;
     margin-right: 10px;
     float: left;

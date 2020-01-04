@@ -7,6 +7,11 @@ let url = 'https://www.test.com'
 
 export default {
   
-  mockData: data => post(url + '', data)
+  mockData: data => post(url + '', data),
   
+  randomMock: data => post('/user' + '', data),
+
+  mockToken: data => post('https://www.login.com',data),
+  
+  mockRest: data => post('restaurants',data),
 }

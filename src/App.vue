@@ -28,13 +28,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 *{
- padding: 0;
- margin: 0; 
+  padding: 0;
+  margin: 0; 
 }
+
 .img{
   text-align: center;
+  /* margin-top: 10px; */
+  img{
+    margin-top: 16px;
+  }
 }
 
 </style>

@@ -9,6 +9,10 @@ import axios from 'axios'
 import './mock/mock'
 import APi from './axios/axios'
 import loading from './components/index'
+import FuliDemo from 'hwl-fuli-demo'
+import 'hwl-fuli-demo/lib/fuli.saas.min.css'
+
+Vue.use(FuliDemo)
 
 Vue.prototype.$api = APi
 Vue.prototype.axios = axios
@@ -17,6 +21,8 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(loading) //挂载该组件 即可在全局使用
 
+// var http =require('http')
+// console.log(http,'http')
 
 
 

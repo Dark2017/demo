@@ -147,11 +147,11 @@ export default {
   methods: {
     //mock数据
     init() {
-      this.$api.mockData().then(res=>{
-        const data = res.data 
-        // this.bizConfig.push(data)
-        console.log(data)
-      })
+      // this.$api.mockData().then(res=>{
+      //   const data = res.data 
+      //   // this.bizConfig.push(data)
+      //   console.log(data)
+      // })
     },
     //配置详情
     set(){
@@ -212,6 +212,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .main{
+  z-index: 10;
   .content{
     display: flex;
     .content_left{
