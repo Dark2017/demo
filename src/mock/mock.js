@@ -51,10 +51,6 @@ Mock.mock('https://www.test.com', {   
       }]
 })
 
-           
-    }]
-})
-
 Mock.mock('https://www.login.com', {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiJvayIsImNvZGUiOjAsImNsaWVudElkIjoic2Fhc09wZXJhdGlvbiIsInVzZXJfbmFtZSI6IjE1OTk5NTYyODY5IiwiZW1wbG95ZWVJZCI6bnVsbCwiY2xpZW50X2lkIjoic2Fhc09wZXJhdGlvbiIsInJlYWxOYW1lIjoi6LWW5rGf5rWpIiwibG9naW5UaW1lIjoxNTc3Njk4ODgzMTgxLCJjdXJyZW50Q29tcGFueUlkIjpudWxsLCJwaG9uZSI6IjE1OTk5NTYyODY5Iiwic2NvcGUiOltdLCJ1c2VyQWNjb3VudCI6ImxhaWppYW5naGFvIiwiaWQiOiI3NDMiLCJleHAiOjI1Nzc2OTg4ODIsImNvbXBhbnlDcmVkaXRDb2RlIjpudWxsLCJqdGkiOiJkMTIxZjhmMC1hYTY5LTRhMWItODhkMS0zYWJmODZmYTVkMGIifQ.wRngNjgmhX8VJzZf4sHnZnak7UEgQwER_njKvilj0-s",
 })
