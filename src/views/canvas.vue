@@ -3,6 +3,8 @@
     <div class="count">
       {{time}}
       <!-- <img src="@assets/sun.jpg"/> -->
+      <el-button @click="testAnmation">Start</el-button>
+      <el-button @click="testAnmationEnd">end</el-button>
     </div>
   </div>
 </template>
@@ -12,7 +14,8 @@ let ctx;
 export default {
   data() {
     return {
-      time:''
+      time:'',
+      idfen:0,
     }
   },
   methods: {
@@ -88,46 +91,53 @@ export default {
     },
     //动画测试
     testAnmation() {
-      let sun = new Image()
+      let sun = new Image()      
       let earth = new Image()
       let moon = new Image()
       let time = new Date()
+      const _this = this //先将当前this存下来
 
-      this.$set(sun,'src','@assets/sun.jpg')
-      console.log(sun.src)
-      // sun.src = '@assets/sun.jpg'
-      earth.src = '@assets/earth.jpg'
-      moon.src = '@assets/moon.jpg'
-      //绘制太阳
-      ctx.drawImage(sun, 0, 0, 300, 300);
-      ctx.save()
-      ctx.translate(150, 150);
+      earth.src = require('@assets/earth.jpg')
+      moon.src = require('@assets/moon.jpg')
+      sun.src = require('@assets/sun.jpg')
 
-      //绘制地球轨道
-      ctx.beginPath();
-      ctx.strokeStyle = "rgba(255,255,0,0.5)";
-      ctx.arc(0, 0, 100, 0, 2 * Math.PI)
-      ctx.stroke()  
-      
-      //绘制地球
-      ctx.drawImage(earth,-12,-12)
-      ctx.translate(100, 0);
-      ctx.drawImage(earth, -12, -12)
-  
-      //绘制月球轨道
-      ctx.beginPath();
-      ctx.strokeStyle = "rgba(255,255,255,.3)";
-      ctx.arc(0, 0, 40, 0, 2 * Math.PI);
-      ctx.stroke();
-  
-      //绘制月球
-      ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
-      ctx.translate(40, 0);
-      ctx.drawImage(moon, -3.5, -3.5);
-      ctx.restore();
-  
-      // requestAnimationFrame(this.testAnmation);
+      //进去onload之后this指向sun
+      sun.onload = function() {
+        ctx.clearRect(0, 0, 300, 300) //清空所有的内容
+        //绘制太阳
+        ctx.drawImage(sun, 125, 125, 50, 50)
+        ctx.save()
+        ctx.translate(150, 150)
+
+        //绘制地球轨道
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255,255,0,0.5)"
+        ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+        ctx.stroke()  
+        
+        //绘制地球
+        ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+        ctx.translate(100, 0)
+        ctx.drawImage(earth, -12,-12,25,25)
     
+        //绘制月球轨道
+        ctx.beginPath()
+        ctx.strokeStyle = "rgba(255,255,255,.3)"
+        ctx.arc(0, 0, 40, 0, 2 * Math.PI)
+        ctx.stroke()
+    
+        //绘制月球
+        ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds())
+        ctx.translate(40, 0)
+        ctx.drawImage(moon, -3.5, -3.5,10,10)
+        ctx.restore()
+        requestAnimationFrame(_this.testAnmation)
+        
+      }
+    
+    },
+    testAnmationEnd() {
+      cancelAnimationFrame(this.testAnmation)
     },
 
     //随机整数
@@ -140,9 +150,10 @@ export default {
     this.initCanavs()
     // this.drawSmile()
     // this.testDraw()
-    setTimeout(() => {
-      this.testAnmation()
-    }, 2000);
+    // setTimeout(() => {
+    //   this.testAnmation()
+    // }, 2000);
+
     //时钟
     this.time = 'loading...'
     setInterval(()=>{
@@ -155,6 +166,9 @@ export default {
 
 <style lang="less" scoped>
 .canvas{
-  background: gray;
+  background: black;
+  .count{
+    color: white;
+  }
 }
 </style>
