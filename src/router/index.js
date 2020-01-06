@@ -22,7 +22,6 @@ const routes = [
       flheader:header
     },
     meta: {requireAuth: true, title: 'home'}
-
   },
   {
     path: '/about',
@@ -70,6 +69,15 @@ const routes = [
       flheader:header
     },
     meta: {requireAuth: true, title: 'keyboard'}
+  },
+  {
+    path:'/canvas',
+    name:'canvas',
+    components:{
+      default: () => import('../views/canvas.vue'),
+      flheader:header
+    },
+    meta: {requireAuth: true, title: 'canvas'}
   },
   {
     path: '*',

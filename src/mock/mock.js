@@ -40,7 +40,7 @@ Mock.mock('https://www.test.com',
 
           "job|1":["web","UI","python","php"],    //工作是数组中的一个
 
-          "routerName|+1":['home', 'about', 'testTable', 'mockImg', 'calculate','keyboard' ], //返回路由
+          "routerName|+1":['home', 'about', 'testTable', 'mockImg', 'calculate', 'keyboard', 'canvas' ], //返回路由
 
       }]
 })
