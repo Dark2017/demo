@@ -1,0 +1,8 @@
+build/
+demo/
+ljhDemo/
+node_modules/
+public/
+src/
+tests/
+
