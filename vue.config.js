@@ -12,6 +12,9 @@ module.exports = {
   chainWebpack: config =>{
      config.resolve.alias.set('@comp',resolve('src/components'));
      config.resolve.alias.set('@assets',resolve('src/assets'));
+  },
+  devServer:{
+    port:8081
   }
-
+  
 }
