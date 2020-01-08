@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import {loading, Loading} from 'element-ui'
+
 export default {
   data() {
     return {
@@ -32,9 +34,14 @@ export default {
         const {data} = await this.$api.mockToken()
         sessionStorage.token = data.token
         console.log(data)
-        this.$router.push({
-          path:'/'
-        })
+        let load = Loading.service({text:'loading...'})
+        setTimeout(() => {
+          this.$router.push({
+            path:'/'
+          })
+          load && load.close()
+        }, 500);
+
       } else {
         this.$message.error('Account is no exist or error account')
       }
