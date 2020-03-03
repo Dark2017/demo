@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <p class="title">
-      table Test
+      table Test I
     </p>
     <fltable :tableData='tableData' 
     :column='column' 
@@ -9,19 +9,27 @@
     @current-change='handleCurrentChange'
     :paginationPop='pagination'
     />
+    <p class="title">
+      table Test II
+    </p>
+    <mytable :data="tableDataI">
+
+    </mytable>
   </div>
 </template>
 
 <script>
 import fltable from '@/components/fltable'
+import mytable from '@/components/Table'
 export default {
   name:'',
   components:{
-    fltable
+    fltable,mytable
   },
 
   data() {
     return {
+
       tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -41,7 +49,7 @@ export default {
         }],
       column:[
         {
-          type:'index',
+          type:'serialNum',
           label:'Number',
           width:'100px'
         },
@@ -57,7 +65,6 @@ export default {
           label:'address',
           prop:'address'
         },
-        
         ],
         pagination:{
           currentPage:1,
@@ -65,17 +72,30 @@ export default {
           pageSize: 50,
           layout: 'total, sizes, prev, pager, next, jumper',
           total:4
-        }
+        },
+
+      tableDataI:{},
+      
     }
+
   },
 
   methods: {
+    init(){
+      this.tableDataI = {
+        column:this.column,
+        records:this.tableData
+      }
+    },
     handleSizeChange(val){
       console.log(`每页 ${val} 条`)
     },
     handleCurrentChange(val){
       console.log(`当前页 ${val} 条`)
     }
+  },
+  mounted() {
+    this.init()
   },
 }
 </script>

@@ -20,9 +20,9 @@ export default {
   padding: 0;
   margin: 0; 
 }
-#app{
-  overflow: scroll;
-}
+// #app{
+//   overflow: scroll;
+// }
 .img{
   text-align: center;
   /* margin-top: 10px; */
