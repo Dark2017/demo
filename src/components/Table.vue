@@ -1,6 +1,13 @@
 <template>
   <div class="table-main">
     <el-table
+      :border="showData.table.border"
+      :data="showData.records"
+      :style="showData.table.style"
+      :stripe="showData.table.stripe"
+      :size="showData.table.size"
+      :highlight-current-row="showData.table['highlight-current-row']"
+      :show-header="showData.table.showHeader"
     >
       <template v-for="(item, index) in showData.column">
         <el-table-column 
@@ -89,7 +96,7 @@ export default {
   },
   methods: {
     showExslot(){
-      console.log(exSlot,'----exSlot')
+      // console.log(exSlot,'----exSlot')
     }
   },
   mounted() {

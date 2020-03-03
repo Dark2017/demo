@@ -26,10 +26,8 @@ export default {
   components:{
     fltable,mytable
   },
-
   data() {
     return {
-
       tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -59,7 +57,7 @@ export default {
         },        
         {
           label:'name',
-          prop:'name',
+          prop:'name'
         },        
         {
           label:'address',
