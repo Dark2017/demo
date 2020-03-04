@@ -117,7 +117,6 @@ export default {
           ...newData.pagination
         }
       }
-      console.log(obj,'obj')
       return obj
     }
   },
