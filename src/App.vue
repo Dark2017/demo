@@ -25,10 +25,11 @@ export default {
 // }
 .img{
   text-align: center;
+  width: 100%;
   /* margin-top: 10px; */
   background: black;
   img{
-    margin-top: 16px;
+    // margin-top: 16px;
   }
 }
 

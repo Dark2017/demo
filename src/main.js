@@ -9,10 +9,10 @@ import axios from 'axios'
 import './mock/mock'
 import APi from './axios/axios'
 import loading from './components/index'
-import FuliDemo from 'hwl-fuli-demo'
-import 'hwl-fuli-demo/lib/fuli.saas.min.css'
+// import FuliDemo from 'hwl-fuli-demo'
+// import 'hwl-fuli-demo/lib/fuli.saas.min.css'
 
-Vue.use(FuliDemo)
+// Vue.use(FuliDemo)
 
 Vue.prototype.$api = APi
 Vue.prototype.axios = axios
